@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F1 International Championship — Temporada 26/27</title>
+<meta name="description" content="Sitio oficial del F1 International Championship. Mercado de pilotos, campeonatos, cuotas simuladas, calendario y estadísticas de la Temporada 26/27.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23E10600%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 font-family=%22Arial%22 font-weight=%22900%22 fill=%22white%22 text-anchor=%22middle%22>F1</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#/inicio" class="brand">
+      <span class="brand__mark">F1</span>
+      <span class="brand__text">INTERNATIONAL <strong>CHAMPIONSHIP</strong></span>
+    </a>
+    <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="navmenu" id="navMenu">
+      <a href="#/inicio" data-route="inicio">Inicio</a>
+      <a href="#/noticias" data-route="noticias">Noticias</a>
+      <a href="#/mercado" data-route="mercado">Mercado de pilotos</a>
+      <a href="#/pilotos" data-route="pilotos">Campeonato de pilotos</a>
+      <a href="#/constructores" data-route="constructores">Constructores</a>
+      <a href="#/cuotas" data-route="cuotas">Cuotas simuladas</a>
+      <a href="#/power" data-route="power">Clasificación de poder</a>
+      <a href="#/calendario" data-route="calendario">Calendario</a>
+      <a href="#/estadisticas" data-route="estadisticas">Estadísticas</a>
+      <a href="#/historial" data-route="historial">Historial</a>
+      <a href="#/admin" data-route="admin" class="navmenu__admin">Administración</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ APP OUTLET ============ -->
+<main id="app"></main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <span class="brand__mark small">F1</span>
+      <p>F1 International Championship — <span id="footerSeason">Temporada 26/27</span></p>
+    </div>
+    <p class="footer__note">Las cuotas y probabilidades de esta web son 100% simuladas, no representan apuestas reales.</p>
+    <p class="footer__mode" id="dbModeLabel"></p>
+  </div>
+</footer>
+
+<!-- ============ MODAL: DRIVER PROFILE ============ -->
+<div class="modal" id="driverModal">
+  <div class="modal__backdrop" data-close="driverModal"></div>
+  <div class="modal__box modal__box--wide" id="driverModalBox"></div>
+</div>
+
+<!-- ============ MODAL: ADMIN LOGIN ============ -->
+<div class="modal" id="loginModal">
+  <div class="modal__backdrop" data-close="loginModal"></div>
+  <div class="modal__box">
+    <h3>Acceso de administrador</h3>
+    <p class="muted">Ingresá la contraseña para editar el campeonato.</p>
+    <input type="password" id="adminPasswordInput" placeholder="Contraseña" class="input">
+    <p class="form-error" id="loginError"></p>
+    <div class="modal__actions">
+      <button class="btn btn--ghost" data-close="loginModal">Cancelar</button>
+      <button class="btn btn--primary" id="loginSubmit">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="js/firebase-config.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<script src="js/data.js"></script>
+<script src="js/odds.js"></script>
+<script src="js/db.js"></script>
+<script src="js/render.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
